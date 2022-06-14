@@ -8,7 +8,7 @@ function Home() {
     return (
         <div>
             <Header />
-            <Container maxWidth="xl" sx={{ px: "100px" }}>
+            <Container maxWidth="xl" sx={{ px: "auto" }}>
                 <div style={{ margin: "30px" }}>
                     <h3>Upcoming...                    </h3>
                     <CardItems />

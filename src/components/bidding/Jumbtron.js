@@ -5,12 +5,12 @@ import React from 'react'
 
 const Jumbtron = () => {
     return (
-        <Card sx={{ width: "70%", height: "400px" }} elevation={3}>
+        <Card sx={{ height: "400px", width: "100%", bgcolor: "black" }} elevation={2}>
             < CardContent >
                 <CardMedia sx={{
                     display: "flex", justifyContent: "center", height: "350px"
                 }}>
-                    <img src={Test} />
+                    <img alt="s" src={Test} />
                 </CardMedia >
             </CardContent >
         </Card >
