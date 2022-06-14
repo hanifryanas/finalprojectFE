@@ -6,7 +6,11 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import { Avatar, Card } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import LooksOneSharpIcon from '@mui/icons-material/LooksOneSharp';
+
+import LooksTwoSharpIcon from '@mui/icons-material/LooksTwoSharp';
+import Looks3SharpIcon from '@mui/icons-material/Looks3Sharp';
+import Looks4SharpIcon from '@mui/icons-material/Looks4Sharp';
+import Looks5SharpIcon from '@mui/icons-material/Looks5Sharp';
 
 export default function InfoBidder() {
     return (
@@ -14,28 +18,9 @@ export default function InfoBidder() {
             <List sx={{ bgcolor: 'background.paper' }}>
                 <ListItem alignItems="flex-start">
                     <ListItemAvatar>
-                        <Avatar alt="1">
-                            <LooksOneSharpIcon />
+                        <Avatar alt="2">
+                            <LooksTwoSharpIcon />
                         </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText
-                        primary="Bambang"
-                        secondary={
-                            <Typography
-                                sx={{ display: 'inline' }}
-                                component="span"
-                                variant="h6"
-                                color="text.primary"
-                            >
-                                Rp. 15.000.000
-                            </Typography>
-                        }
-                    />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem alignItems="flex-start">
-                    <ListItemAvatar>
-                        <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
                     </ListItemAvatar>
                     <ListItemText
                         primary="Babeh"
@@ -54,7 +39,9 @@ export default function InfoBidder() {
                 <Divider variant="inset" component="li" />
                 <ListItem alignItems="flex-start">
                     <ListItemAvatar>
-                        <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+                        <Avatar alt="3">
+                            <Looks3SharpIcon />
+                        </Avatar>
                     </ListItemAvatar>
                     <ListItemText
                         primary="Bodot"
@@ -73,7 +60,9 @@ export default function InfoBidder() {
                 <Divider variant="inset" component="li" />
                 <ListItem alignItems="flex-start">
                     <ListItemAvatar>
-                        <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
+                        <Avatar alt="4">
+                            <Looks4SharpIcon />
+                        </Avatar>
                     </ListItemAvatar>
                     <ListItemText
                         primary="Babeh"
@@ -92,7 +81,9 @@ export default function InfoBidder() {
                 <Divider variant="inset" component="li" />
                 <ListItem alignItems="flex-start">
                     <ListItemAvatar>
-                        <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
+                        <Avatar alt="5">
+                            <Looks5SharpIcon />
+                        </Avatar>
                     </ListItemAvatar>
                     <ListItemText
                         primary="Babeh"
