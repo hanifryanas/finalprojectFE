@@ -1,10 +1,33 @@
 import * as React from 'react';
+import axios from 'axios';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { Box, Button, } from '@mui/material';
 
 const FormLelang = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const id = 1;//user bisa dikrim dari session
+    axios.post(`http://localhost:3500/id/${id}/product/`, {
+      owner_ID: id,
+      name: event.target.Tittle.value,
+      price: event.target.startPrice.value,
+      description: event.target.description.value,
+      image: event.target.image.value,
+      category: event.target.jenisBarang.value,
+      bidding_range: event.target.bidding_range.value,
+      start_bid_date : event.target.dateStarted.value,
+      end_bid_date : event.target.dateEnd.value,
+      image : event.target.Picture.value,
+  })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
   return (
     <Box sx={{
       boxShadow: 2,
@@ -13,7 +36,7 @@ const FormLelang = () => {
       <Typography variant="h6" gutterBottom>
         Form Lelang
       </Typography>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} onSubmit={handleSubmit}>
         <Grid item xs={12} sm={8}>
           <TextField
             required

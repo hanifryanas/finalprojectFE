@@ -1,4 +1,5 @@
 import * as React from 'react';
+import axios from 'axios';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -31,10 +32,15 @@ function Copyright(props) {
 const SignInForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+    axios.post('http://localhost:3500/user/signin', {
+      email: event.target.email.value,
+      password: event.target.password.value
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
     });
   };
 
