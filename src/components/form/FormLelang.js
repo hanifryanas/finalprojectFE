@@ -31,12 +31,23 @@ const FormLelang = () => {
   return (
     <Box sx={{
       boxShadow: 2,
-      padding: 10,
+      padding: 5,
     }}>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h5" gutterBottom sx={{ mb: 4 }}>
         Form Lelang
       </Typography>
       <Grid container spacing={3} onSubmit={handleSubmit}>
+        <Grid item xs={12} sm={8}>
+          <TextField
+            required
+            id="Tittle"
+            name="Tittle"
+            label="Tittle"
+            fullWidth
+            autoComplete="family-name"
+            variant="standard"
+          />
+        </Grid>
         <Grid item xs={12} sm={8}>
           <TextField
             required
@@ -50,14 +61,15 @@ const FormLelang = () => {
         <Grid item xs={12} sm={8}>
           <TextField
             required
-            id="Tittle"
-            name="Tittle"
-            label="Tittle"
+            id="Category"
+            name="Category"
+            label="Category"
             fullWidth
             autoComplete="family-name"
             variant="standard"
           />
         </Grid>
+
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -79,17 +91,7 @@ const FormLelang = () => {
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="dateStarted"
-            name="dateStarted"
-            label="Date Started"
-            fullWidth
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12}>
           <TextField
             required
             id="dateEnd"
@@ -114,19 +116,21 @@ const FormLelang = () => {
         </Grid>
         <Grid item xs={12}>
           <TextField
-            id="Picture"
-            name="Picture"
-            label="Picture"
+            id="Deskripsi"
+            name="Deskripsi"
+            label="Deskripsi"
             fullWidth
+            multiline
+            rows={5}
             variant="standard"
           />
         </Grid>
       </Grid>
 
 
-      <Grid container justifyContent="flex-end">
+      <Grid container justifyContent="flex-end" sx={{ mt: 10 }}>
         <Grid item>
-          <Button >Lelang</Button>
+          <Button variant="contained">Lelang</Button>
         </Grid>
       </Grid>
 
