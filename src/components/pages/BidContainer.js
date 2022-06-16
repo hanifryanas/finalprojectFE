@@ -8,9 +8,6 @@ import ActionAreaBid from '../bidding/ActionAreaBid'
 import LastPrice from '../bidding/LastPrice'
 
 
-
-
-
 const BidContainer = () => {
 
     const [productList, setProductList] = useState([])
