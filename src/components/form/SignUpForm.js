@@ -31,28 +31,32 @@ function Copyright(props) {
 }
 
 const SignUpForm = () => {
-
-
-
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
-  // const [address, setAddress] = useState("")
+  const [address, setAddress] = useState("")
   const [phone, setPhone] = useState("")
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   const registerUser = (event) => {
     event.preventDefault();
     axios.post('http://localhost:3500/user/signup', {
-      name,
-      password,
-      email,
-      phone,
-    }).then((response) =>
-      navigate('/')
-    ).
-      catch(error =>
-        console.log(error.response.data));
+      username : name,
+      password : password,
+      email : email,
+      phone : phone,
+      address : address,
+    })
+    .then((response) => {
+      alert("Register success, you may now login first!")
+      navigate('/signin');
+    }
+    )
+    .catch((error) => {
+      alert(error.response.data)
+      console.log(error);
+    }
+    );
   }
 
 
@@ -124,6 +128,17 @@ const SignUpForm = () => {
                 label="Phone"
                 type="Phone"
                 id="Phone" />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                required
+                fullWidth
+                name="Address"
+                onChange={(e) => setAddress(e.target.value)}
+                value={address}
+                label="Address"
+                type="Address"
+                id="Address" />
             </Grid>
             <Grid item xs={12}>
             </Grid>

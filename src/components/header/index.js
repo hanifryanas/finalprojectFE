@@ -12,9 +12,9 @@ const Header = () => {
         <div>
           <h1>Melelang</h1>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-around" }}>
+        {/* <div style={{ display: "flex", justifyContent: "space-around" }}>
           <div style={{ width: "500px", marginLeft: "50px" }}><SearchBarTop /></div>
-        </div>
+        </div> */}
         <TopRightNavi />
 
       </Container>

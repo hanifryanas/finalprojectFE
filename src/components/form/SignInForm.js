@@ -32,12 +32,8 @@ function Copyright(props) {
 
 
 const SignInForm = () => {
-
-
-  const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [login, setLogin] = useState(false);
 
     const handleEmail = (e) => {
       const val = e.target.value;
@@ -57,20 +53,18 @@ const SignInForm = () => {
       };
 
 
-      axios.post('http://localhost:3500/user/signin',)
+      axios.post('http://localhost:3500/user/signin', user)
         .then((res) => {
-          if (res?.data?.access_token) {
-            const accessToken = `Bearer ${res.data.access_token}`;
-            localStorage.setItem("accessToken", accessToken);
-            if (login === true) {
-              window.location.href = "/roomBid";
-            } else {
-              window.location.href = "/";
-            }
+          if (res.data.token) {
+            const accessToken = `Bearer ${res.data.token}`;
+            localStorage.setItem('accessToken', accessToken);
+            localStorage.setItem('userid',(res.data.user.id));
+            localStorage.setItem('username', (res.data.user.username));
+            window.location.href = '/';
           }
           else {
             alert("Incorrect email or password");
-            window.location.href = "/login";
+            window.location.href = "/signIn";
           }
         })
         .catch((err) => {
@@ -151,7 +145,6 @@ const SignInForm = () => {
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     );
-  }
 }
 
 export default SignInForm

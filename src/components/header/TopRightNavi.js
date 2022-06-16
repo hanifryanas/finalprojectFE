@@ -1,6 +1,5 @@
-import React from 'react'
-import { Button, Box, Typography, Modal } from '@mui/material'
-import Cart from './Cart'
+import React, {useState, useEffect} from 'react'
+import { Button, Box, Modal } from '@mui/material'
 import SignInForm from '../form/SignInForm'
 
 const TopRightNavi = () => {
@@ -17,17 +16,66 @@ const TopRightNavi = () => {
         p: 4,
     };
 
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [username, setUserName] = useState(null);
 
+    const handleLogout = () => {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("username");
+        localStorage.removeItem("userId");
+        setIsLoggedIn(false);
+        setUserName(null);
+        handleClose();
+    }
 
+    useEffect(() => {
+        updateUserStatus();
+    }
+    , [])
+
+    const updateUserStatus = () => {
+        const accessToken = localStorage.getItem('accessToken');
+        const getUsername = localStorage.getItem('username');
+        if (accessToken) {
+            setIsLoggedIn(true);
+            setUserName(getUsername);
+        } else {
+            setIsLoggedIn(false);
+        }
+    } 
 
     return (
-        <div style={{ display: 'flex', alignContent: "space-around", gap: "10px", marginTop: "20px" }}>
-
-            <Cart></Cart>
+        isLoggedIn ?
+            <>
+            <div style={{ display: 'flex', alignContent: "space-around", gap: "10px", marginTop: "20px" }}>
+            {/* <Cart></Cart> */}
             <Button href="/formLelangPage" variant="contained" sx={{ height: "45px" }} size="small">Melelang</Button>
+            <Button onClick={handleOpen} href="#" variant="outlined" sx={{ height: "45px" }}>{username}</Button>
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <div>
+                        <h2>Hello {username}!</h2>
+                        <p>Are you sure want to Exit?</p>
+                        <Button onClick={handleClose}>No</Button>
+                        <Button onClick={handleLogout}>Yes</Button>
+                    </div>
+                </Box>
+            </Modal>
+        </div>
+        </>
+        :
+        <>
+        <div style={{ display: 'flex', alignContent: "space-around", gap: "10px", marginTop: "20px" }}>
+            {/* <Cart></Cart> */}
+            <Button href="/signin" variant="contained" sx={{ height: "45px" }} size="small">Melelang</Button>
             <Button onClick={handleOpen} href="#" variant="outlined" sx={{ height: "45px" }}>Login / Sign Up</Button>
             <Modal
                 open={open}
@@ -39,9 +87,8 @@ const TopRightNavi = () => {
                     <SignInForm />
                 </Box>
             </Modal>
-
-
         </div>
+        </>
     )
 }
 
