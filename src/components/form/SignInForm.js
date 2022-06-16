@@ -32,51 +32,42 @@ function Copyright(props) {
 
 
 const SignInForm = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [login, setLogin] = useState(false);
-
-  const handleEmail = (e) => {
-    const val = e.target.value;
-    setEmail(val);
-  };
-
-  const handlePassword = (e) => {
-    const val = e.target.value;
-    setPassword(val);
-  };
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const user = {
-      email: email,
-      password: password,
+    const handleEmail = (e) => {
+      const val = e.target.value;
+      setEmail(val);
     };
   }
 
 
-  //     axios.post('http://localhost:3500/user/signin',)
-  //       .then((res) => {
-  //         if (res?.data?.access_token) {
-  //           const accessToken = `Bearer ${res.data.access_token}`;
-  //           localStorage.setItem("accessToken", accessToken);
-  //           if (login === true) {
-  //             window.location.href = "/roomBid";
-  //           } else {
-  //             window.location.href = "/";
-  //           }
-  //         }
-  //         else {
-  //           alert("Incorrect email or password");
-  //           window.location.href = "/login";
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   };
+    const handleLogin = (e) => {
+      e.preventDefault();
+      const user = {
+        email: email,
+        password: password,
+      };
+
+
+      axios.post('http://localhost:3500/user/signin', user)
+        .then((res) => {
+          if (res.data.token) {
+            const accessToken = `Bearer ${res.data.token}`;
+            localStorage.setItem('accessToken', accessToken);
+            localStorage.setItem('userid',(res.data.user.id));
+            localStorage.setItem('username', (res.data.user.username));
+            window.location.href = '/';
+          }
+          else {
+            alert("Incorrect email or password");
+            window.location.href = "/signIn";
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
 
 
 
@@ -147,10 +138,9 @@ const SignInForm = () => {
             </Grid>
           </Grid>
         </Box>
-      </Box>
-      <Copyright sx={{ mt: 8, mb: 4 }} />
-    </Container>
-  );
+        <Copyright sx={{ mt: 8, mb: 4 }} />
+      </Container>
+    );
 }
 
 
