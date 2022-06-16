@@ -17,17 +17,17 @@ const FormLelang = () => {
       image: event.target.image.value,
       category: event.target.jenisBarang.value,
       bidding_range: event.target.bidding_range.value,
-      start_bid_date : event.target.dateStarted.value,
-      end_bid_date : event.target.dateEnd.value,
-      image : event.target.Picture.value,
-  })
-    .then(function (response) {
-      console.log(response);
+      start_bid_date: event.target.dateStarted.value,
+      end_bid_date: event.target.dateEnd.value,
+      image: event.target.Picture.value,
     })
-    .catch(function (error) {
-      console.log(error);
-    });
-};
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
   return (
     <Box sx={{
       boxShadow: 2,
@@ -58,12 +58,23 @@ const FormLelang = () => {
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
           <TextField
             required
             id="startPrice"
             name="startPrice"
             label="Start Price"
+            fullWidth
+            variant="standard"
+          />
+        </Grid>
+
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="BidRange"
+            name="BidRange"
+            label="Bid Range"
             fullWidth
             variant="standard"
           />
@@ -101,7 +112,17 @@ const FormLelang = () => {
             variant="standard"
           />
         </Grid>
+        <Grid item xs={12}>
+          <TextField
+            id="Picture"
+            name="Picture"
+            label="Picture"
+            fullWidth
+            variant="standard"
+          />
+        </Grid>
       </Grid>
+
 
       <Grid container justifyContent="flex-end">
         <Grid item>

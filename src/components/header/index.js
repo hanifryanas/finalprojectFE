@@ -1,6 +1,6 @@
 import React from 'react'
 import TopRightNavi from './TopRightNavi';
-import SearchBarTop from './SearchBarTop';
+// import SearchBarTop from './SearchBarTop';
 import { Container } from '@mui/system';
 
 const Header = () => {
@@ -13,7 +13,9 @@ const Header = () => {
           <h1>Melelang</h1>
         </div>
         <div style={{ display: "flex", justifyContent: "space-around" }}>
-          <div style={{ width: "500px", marginLeft: "50px" }}><SearchBarTop /></div>
+          <div style={{ width: "500px", marginLeft: "50px" }}>
+            {/* <SearchBarTop /> */}
+          </div>
         </div>
         <TopRightNavi />
 
