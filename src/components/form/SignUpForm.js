@@ -41,22 +41,22 @@ const SignUpForm = () => {
   const registerUser = (event) => {
     event.preventDefault();
     axios.post('http://localhost:3500/user/signup', {
-      username : name,
-      password : password,
-      email : email,
-      phone : phone,
-      address : address,
+      username: name,
+      password: password,
+      email: email,
+      phone: phone,
+      address: address,
     })
-    .then((response) => {
-      alert("Register success, you may now login first!")
-      navigate('/signin');
-    }
-    )
-    .catch((error) => {
-      alert(error.response.data)
-      console.log(error);
-    }
-    );
+      .then((response) => {
+        alert("Register success, you may now login first!")
+        navigate('/signin');
+      }
+      )
+      .catch((error) => {
+        alert(error.response.data)
+        console.log(error);
+      }
+      );
   }
 
 

@@ -12,17 +12,9 @@ const Header = () => {
         <div>
           <h1>Melelang</h1>
         </div>
-<<<<<<< HEAD
-        <div style={{ display: "flex", justifyContent: "space-around" }}>
-          <div style={{ width: "500px", marginLeft: "50px" }}>
-            {/* <SearchBarTop /> */}
-          </div>
-        </div>
-=======
         {/* <div style={{ display: "flex", justifyContent: "space-around" }}>
           <div style={{ width: "500px", marginLeft: "50px" }}><SearchBarTop /></div>
         </div> */}
->>>>>>> 9f3a95acfbbbeee753a99d385959eee2109e676f
         <TopRightNavi />
 
       </Container>

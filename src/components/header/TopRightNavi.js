@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import { Button, Box, Modal } from '@mui/material'
+import React, { useState, useEffect } from 'react'
+import { Button, Box, Modal, Typography, Divider } from '@mui/material'
 import SignInForm from '../form/SignInForm'
 
 const TopRightNavi = () => {
@@ -34,7 +34,7 @@ const TopRightNavi = () => {
     useEffect(() => {
         updateUserStatus();
     }
-    , [])
+        , [])
 
     const updateUserStatus = () => {
         const accessToken = localStorage.getItem('accessToken');
@@ -45,50 +45,53 @@ const TopRightNavi = () => {
         } else {
             setIsLoggedIn(false);
         }
-    } 
+    }
 
     return (
         isLoggedIn ?
             <>
-            <div style={{ display: 'flex', alignContent: "space-around", gap: "10px", marginTop: "20px" }}>
-            {/* <Cart></Cart> */}
-            <Button href="/formLelangPage" variant="contained" sx={{ height: "45px" }} size="small">Melelang</Button>
-            <Button onClick={handleOpen} href="#" variant="outlined" sx={{ height: "45px" }}>{username}</Button>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={style}>
-                    <div>
-                        <h2>Hello {username}!</h2>
-                        <p>Are you sure want to Exit?</p>
-                        <Button onClick={handleClose}>No</Button>
-                        <Button onClick={handleLogout}>Yes</Button>
-                    </div>
-                </Box>
-            </Modal>
-        </div>
-        </>
-        :
-        <>
-        <div style={{ display: 'flex', alignContent: "space-around", gap: "10px", marginTop: "20px" }}>
-            {/* <Cart></Cart> */}
-            <Button href="/signin" variant="contained" sx={{ height: "45px" }} size="small">Melelang</Button>
-            <Button onClick={handleOpen} href="#" variant="outlined" sx={{ height: "45px" }}>Login / Sign Up</Button>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={style}>
-                    <SignInForm />
-                </Box>
-            </Modal>
-        </div>
-        </>
+                <div style={{ display: 'flex', alignContent: "space-around", gap: "10px", marginTop: "20px" }}>
+                    {/* <Cart></Cart> */}
+                    <Button href="/formLelangPage" variant="contained" sx={{ height: "45px" }} size="small">Melelang</Button>
+                    <Button onClick={handleOpen} href="#" variant="outlined" sx={{ height: "45px" }}>{username}</Button>
+                    <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                    >
+                        <Box sx={style}>
+                            <div>
+                                <Typography variant="h5" component="div" sx={{ mb: 1 }}>Hello {username}!</Typography >
+                                <Divider sx={{ mb: 2 }} />
+                                <Typography variant='h6' component="div" color="gray" sx={{ height: 100 }}>Are you sure want to Exit?</Typography>
+                                <div style={{ width: "100%", display: "flex", gap: 4, justifyContent: "flex-end" }}>
+                                    <Button variantonClick={handleClose} variant="contained"> No</Button>
+                                    <Button onClick={handleLogout} variant="contained">Yes</Button>
+                                </div>
+                            </div>
+                        </Box>
+                    </Modal >
+                </div >
+            </>
+            :
+            <>
+                <div style={{ display: 'flex', alignContent: "space-around", gap: "10px", marginTop: "20px" }}>
+                    {/* <Cart></Cart> */}
+                    <Button href="/signin" variant="contained" sx={{ height: "45px" }} size="small">Melelang</Button>
+                    <Button onClick={handleOpen} href="#" variant="outlined" sx={{ height: "45px" }}>Login / Sign Up</Button>
+                    <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                    >
+                        <Box sx={style}>
+                            <SignInForm />
+                        </Box>
+                    </Modal>
+                </div>
+            </>
     )
 }
 

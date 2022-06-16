@@ -32,42 +32,45 @@ function Copyright(props) {
 
 
 const SignInForm = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    const handleEmail = (e) => {
-      const val = e.target.value;
-      setEmail(val);
+  const handleEmail = (e) => {
+    const val = e.target.value;
+    setEmail(val);
+  };
+
+  const handlePassword = (e) => {
+    const val = e.target.value;
+    setPassword(val);
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const user = {
+      email: email,
+      password: password,
     };
-  }
 
 
-    const handleLogin = (e) => {
-      e.preventDefault();
-      const user = {
-        email: email,
-        password: password,
-      };
-
-
-      axios.post('http://localhost:3500/user/signin', user)
-        .then((res) => {
-          if (res.data.token) {
-            const accessToken = `Bearer ${res.data.token}`;
-            localStorage.setItem('accessToken', accessToken);
-            localStorage.setItem('userid',(res.data.user.id));
-            localStorage.setItem('username', (res.data.user.username));
-            window.location.href = '/';
-          }
-          else {
-            alert("Incorrect email or password");
-            window.location.href = "/signIn";
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
+    axios.post('http://localhost:3500/user/signin', user)
+      .then((res) => {
+        if (res.data.token) {
+          const accessToken = `Bearer ${res.data.token}`;
+          localStorage.setItem('accessToken', accessToken);
+          localStorage.setItem('userid', (res.data.user.id));
+          localStorage.setItem('username', (res.data.user.username));
+          window.location.href = '/';
+        }
+        else {
+          alert("Incorrect email or password");
+          window.location.href = "/signIn";
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
 
 
@@ -138,10 +141,10 @@ const SignInForm = () => {
             </Grid>
           </Grid>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
-      </Container>
-    );
+      </Box>
+      <Copyright sx={{ mt: 8, mb: 4 }} />
+    </Container>
+  );
 }
-
 
 export default SignInForm
