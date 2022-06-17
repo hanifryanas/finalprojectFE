@@ -1,16 +1,19 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  FormControlLabel,
+  Checkbox,
+  Link,
+  Grid,
+  Box,
+  Typography,
+  Container
+} from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 
 
 
@@ -29,14 +32,47 @@ function Copyright(props) {
 
 
 const SignInForm = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleEmail = (e) => {
+    const val = e.target.value;
+    setEmail(val);
   };
+
+  const handlePassword = (e) => {
+    const val = e.target.value;
+    setPassword(val);
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const user = {
+      email: email,
+      password: password,
+    };
+
+
+    axios.post('http://localhost:3500/user/signin', user)
+      .then((res) => {
+        if (res.data.token) {
+          const accessToken = `Bearer ${res.data.token}`;
+          localStorage.setItem('accessToken', accessToken);
+          localStorage.setItem('userid', (res.data.user.id));
+          localStorage.setItem('username', (res.data.user.username));
+          window.location.href = '/';
+        }
+        else {
+          alert("Incorrect email or password");
+          window.location.href = "/signIn";
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+
 
   return (
     <Container component="main" maxWidth="xs">
@@ -49,13 +85,13 @@ const SignInForm = () => {
           alignItems: 'center',
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+        <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={handleLogin} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -63,6 +99,8 @@ const SignInForm = () => {
             id="email"
             label="Email Address"
             name="email"
+            value={email}
+            onChange={handleEmail}
             autoComplete="email"
             autoFocus
           />
@@ -72,6 +110,8 @@ const SignInForm = () => {
             fullWidth
             name="password"
             label="Password"
+            value={password}
+            onChange={handlePassword}
             type="password"
             id="password"
             autoComplete="current-password"
@@ -106,6 +146,5 @@ const SignInForm = () => {
     </Container>
   );
 }
-
 
 export default SignInForm

@@ -1,16 +1,20 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+import React, { useState } from 'react';
+import axios from 'axios';
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  FormControlLabel,
+  Checkbox,
+  Link,
+  Grid,
+  Box,
+  Typography,
+  Container
+} from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import { useNavigate } from 'react-router';
 
 
 function Copyright(props) {
@@ -19,23 +23,42 @@ function Copyright(props) {
       {'Copyright © '}
       <Link color="inherit" href="#">
         Melelang
-      </Link>{' '}
+      </Link>{'/'}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
   );
 }
 
+const SignUpForm = () => {
+  const [name, setName] = useState("")
+  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("")
+  const [address, setAddress] = useState("")
+  const [phone, setPhone] = useState("")
+  const navigate = useNavigate();
 
-export default function SignUpForm() {
-  const handleSubmit = (event) => {
+  const registerUser = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+    axios.post('http://localhost:3500/user/signup', {
+      username: name,
+      password: password,
+      email: email,
+      phone: phone,
+      address: address,
+    })
+      .then((response) => {
+        alert("Register success, you may now login first!")
+        navigate('/signin');
+      }
+      )
+      .catch((error) => {
+        alert(error.response.data)
+        console.log(error);
+      }
+      );
+  }
+
 
   return (
     <Container component="main" maxWidth="xs">
@@ -54,27 +77,19 @@ export default function SignUpForm() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+        <Box component="form" noValidate onSubmit={registerUser} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={12}>
               <TextField
                 autoComplete="given-name"
-                name="firstName"
+                name="Name"
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                id="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                label=" Name"
                 autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="family-name"
               />
             </Grid>
             <Grid item xs={12}>
@@ -82,6 +97,8 @@ export default function SignUpForm() {
                 required
                 fullWidth
                 id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 label="Email Address"
                 name="email"
                 autoComplete="email"
@@ -92,6 +109,8 @@ export default function SignUpForm() {
                 required
                 fullWidth
                 name="password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
                 label="Password"
                 type="password"
                 id="password"
@@ -104,6 +123,8 @@ export default function SignUpForm() {
                 required
                 fullWidth
                 name="Phone"
+                onChange={(e) => setPhone(e.target.value)}
+                value={phone}
                 label="Phone"
                 type="Phone"
                 id="Phone" />
@@ -113,10 +134,13 @@ export default function SignUpForm() {
                 required
                 fullWidth
                 name="Address"
+                onChange={(e) => setAddress(e.target.value)}
+                value={address}
                 label="Address"
                 type="Address"
-                id="Address"
-              />
+                id="Address" />
+            </Grid>
+            <Grid item xs={12}>
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
@@ -138,4 +162,7 @@ export default function SignUpForm() {
       <Copyright sx={{ mt: 5 }} />
     </Container>
   );
+
 }
+
+export default SignUpForm

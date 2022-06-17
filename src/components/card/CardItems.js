@@ -5,38 +5,49 @@ import {
   CardContent,
   CardActions,
   Button,
-  Typography
+  Typography,
+  Chip
 } from '@mui/material';
+import NumberFormat from 'react-number-format';
+import EllipsisText from 'react-ellipsis-text/lib/components/EllipsisText';
 
-import { Test } from '../../assets/img/index'
 
-function CardItems() {
-
+const CardItems = ({ product }) => {
+  const handleBid = () => {
+    localStorage.setItem('productId', product.id);
+    window.location.href = `/roomBid`;
+  }
 
   return (
-    <Card sx={{ width: 270, height: 390, paddingTop: "10px", padding: "10px" }} action="#">
+    <Card sx={{ width: 270, height: 390, }} action="#" onClick={handleBid}>
       <CardMedia sx={{ display: "flex", justifyContent: "center", height: "200px" }}>
-        <img src={Test} />
+        <img src={product.image} alt="product-img" />
       </CardMedia>
       <CardContent>
-        <Typography gutterBottom variant="h6" component="div">
-          Ikan Koi Arapaima as dasdasdasd
+        <Typography component="div" sx={{ color: "#1B2430", fontWeight: "600", fontSize: "1.6em", }}>
+          <EllipsisText text={product.name} length={"15"} />
+
+
         </Typography>
-      </CardContent>
-      <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
-        <div>
-          <Typography variant='h7' component="div" sx={{ color: "red" }}>
-            Start: 15000
-          </Typography>
-          <Typography variant='h7' component="div">
-            Bandung, kopo...
-          </Typography>
-        </div>
-        <Typography variant='h7' component="div">
-          10:20
+        <Typography variant="h7" component="div" sx={{ color: "gray" }}>
+          <EllipsisText text={product.category} length={"15"} />
         </Typography>
 
-      </CardActions>
+      </CardContent>
+
+
+      <div style={{ padding: 10 }}>
+        <Typography variant='h6' fullwidth component="div" mt>
+          <NumberFormat value={product.price} displayType={'text'} thousandSeparator={true} prefix={'Rp '} />;
+        </Typography>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography variant='subtitle1' component="div" sx={{ color: "gray", mt: 0.5 }}>
+            LB:  <NumberFormat value={product.bidding_range} displayType={'text'} thousandSeparator={true} prefix={'Rp '} />
+          </Typography>
+
+          <Chip color="error" label={product.close_bid_date} />
+        </div>
+      </div>
 
     </Card >
   );
