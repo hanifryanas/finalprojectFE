@@ -36,7 +36,7 @@ const FormLelang = () => {
       start_bid_date: start_bid_date,
       close_bid_date: end_bid_date,
     }
-    axios.post(`http://localhost:3500/user/id/${userid}/product/`, data)
+    axios.post(`http://localhost:3500/product/user/${userid}/`, data)
     .then(function (response) {
         console.log(response);
         alert("Product has been added");

@@ -9,9 +9,13 @@ import {
 } from '@mui/material';
 
 const CardItems = ({product}) => {
+  const handleBid = () => {
+    localStorage.setItem('productId', product.id);
+    window.location.href = `/roomBid`;
+  }
 
   return (
-    <Card sx={{ width: 270, height: 390, paddingTop: "10px", padding: "10px" }} action="#">
+    <Card sx={{ width: 270, height: 390, paddingTop: "10px", padding: "10px" }} action="#" onClick={handleBid}>
       <CardMedia sx={{ display: "flex", justifyContent: "center", height: "200px" }}>
         <img src={product.image} alt="product-img"/>
       </CardMedia>
