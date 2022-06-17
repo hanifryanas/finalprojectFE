@@ -67,7 +67,7 @@ const TopRightNavi = () => {
                                 <Divider sx={{ mb: 2 }} />
                                 <Typography variant='h6' component="div" color="gray" sx={{ height: 100 }}>Are you sure want to Exit?</Typography>
                                 <div style={{ width: "100%", display: "flex", gap: 4, justifyContent: "flex-end" }}>
-                                    <Button variantonClick={handleClose} variant="contained"> No</Button>
+                                    <Button onClick={handleClose} variant="contained"> No</Button>
                                     <Button onClick={handleLogout} variant="contained">Yes</Button>
                                 </div>
                             </div>

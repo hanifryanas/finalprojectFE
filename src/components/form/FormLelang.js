@@ -36,7 +36,7 @@ const FormLelang = () => {
       start_bid_date: start_bid_date,
       close_bid_date: end_bid_date,
     }
-    axios.post(`http://localhost:3500/product/user/${userid}/`, data)
+    axios.post(`https://ancient-tundra-53041.herokuapp.com/product/user/${userid}/`, data)
       .then(function (response) {
         console.log(response);
         alert("Product has been added");

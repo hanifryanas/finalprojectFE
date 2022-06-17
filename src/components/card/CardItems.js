@@ -38,7 +38,7 @@ const CardItems = ({ product }) => {
 
       <div style={{ padding: 10 }}>
         <Typography variant='h6' fullwidth component="div" mt>
-          <NumberFormat value={product.price} displayType={'text'} thousandSeparator={true} prefix={'Rp '} />;
+          <NumberFormat value={product.price} displayType={'text'} thousandSeparator={true} prefix={'Rp '} />
         </Typography>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variant='subtitle1' component="div" sx={{ color: "gray", mt: 0.5 }}>

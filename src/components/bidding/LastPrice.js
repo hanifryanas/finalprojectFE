@@ -2,6 +2,8 @@ import React from 'react'
 import Typography from '@mui/material/Typography';
 import { Paper, Avatar } from '@mui/material';
 import LooksOneSharpIcon from '@mui/icons-material/LooksOneSharp';
+import NumberFormat from 'react-number-format';
+
 
 const LastPrice = (product) => {
     return (
@@ -15,7 +17,8 @@ const LastPrice = (product) => {
                 </Typography>
             </div>
             <Typography component="p" variant="h4" sx={{ mb: 2 }}>
-                {product.product.price}
+                <NumberFormat value={product.product.price} displayType={'text'} thousandSeparator={true} prefix={'Rp '} />
+
             </Typography>
 
         </Paper>

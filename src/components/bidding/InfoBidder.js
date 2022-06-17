@@ -11,8 +11,9 @@ import LooksTwoSharpIcon from '@mui/icons-material/LooksTwoSharp';
 import Looks3SharpIcon from '@mui/icons-material/Looks3Sharp';
 import Looks4SharpIcon from '@mui/icons-material/Looks4Sharp';
 import Looks5SharpIcon from '@mui/icons-material/Looks5Sharp';
+import NumberFormat from 'react-number-format';
 
-const InfoBidder = (bidders) =>{
+const InfoBidder = (bidders) => {
     let dataBidder = []
     let dataPrice = []
     bidders.bidder.map((bidder) => {
@@ -38,7 +39,7 @@ const InfoBidder = (bidders) =>{
                                 variant="h6"
                                 color="text.primary"
                             >
-                               {dataPrice[1]}
+                                <NumberFormat value={dataPrice[1]} displayType={'text'} thousandSeparator={true} prefix={'Rp '} />
                             </Typography>
                         }
                     />
@@ -59,7 +60,7 @@ const InfoBidder = (bidders) =>{
                                 variant="h6"
                                 color="text.primary"
                             >
-                               {dataPrice[2]}
+                                <NumberFormat value={dataPrice[2]} displayType={'text'} thousandSeparator={true} prefix={'Rp '} />
                             </Typography>
                         }
                     />
@@ -80,7 +81,7 @@ const InfoBidder = (bidders) =>{
                                 variant="h6"
                                 color="text.primary"
                             >
-                                {dataPrice[3]}
+                                <NumberFormat value={dataPrice[3]} displayType={'text'} thousandSeparator={true} prefix={'Rp '} />
                             </Typography>
                         }
                     />
@@ -101,7 +102,7 @@ const InfoBidder = (bidders) =>{
                                 variant="h6"
                                 color="text.primary"
                             >
-                                {dataPrice[4]}
+                                <NumberFormat value={dataPrice[4]} displayType={'text'} thousandSeparator={true} prefix={'Rp '} />
                             </Typography>
                         }
                     />
