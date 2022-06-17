@@ -15,6 +15,9 @@ const FormLelang = () => {
   const [end_bid_date, setEndBidDate] = useState("");
   const [image_url, setImageUrl] = useState("");
 
+//
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const userid = localStorage.getItem('userid');

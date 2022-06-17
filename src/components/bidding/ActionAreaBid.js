@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
-import { Button, IconButton, Paper } from '@mui/material';
+import { Button, Paper } from '@mui/material';
 import axios from 'axios';
 import NumberFormat from 'react-number-format';
 
 
 
 const ActionAreaBid = (product) => {
+
+    //unLogin
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        updateUserStatus();
+    })
+    const updateUserStatus = () => {
+        const accessToken = localStorage.getItem('accessToken');
+        if (accessToken) {
+            setIsLoggedIn(true);
+        } else {
+            setIsLoggedIn(false);
+        }
+    }
 
 
     const handleBidOrder = () => {
@@ -34,7 +49,6 @@ const ActionAreaBid = (product) => {
             })
     }
 
-    const [bid, setBid] = useState()
 
     return (
         <Paper sx={{ p: 3 }}>
@@ -47,10 +61,15 @@ const ActionAreaBid = (product) => {
                     <NumberFormat value={product.product.price + product.product.bidding_range} displayType={'text'} thousandSeparator={true} prefix={'Rp '} />
 
                 </Typography>
-            </div>
-            <Button variant="contained" size='large' fullWidth onClick={handleBidOrder}>
-                Bid
-            </Button>
+            </div>{isLoggedIn ?
+                <Button variant="contained" size='large' fullWidth onClick={handleBidOrder}>
+                    Bid
+                </Button>
+                :
+                <Button variant="contained" size='large' fullWidth onClick={() => { window.location.href = '/signIn' }}>
+                    Bid
+                </Button>
+            }
 
         </Paper >
     );

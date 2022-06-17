@@ -1,5 +1,4 @@
-import { Card, Avatar, Stack, Typography, Grid, Paper } from '@mui/material'
-import { Container } from '@mui/system'
+import { Card, Stack, Typography, } from '@mui/material'
 import React from 'react'
 
 const InfoItem = (product) => {
@@ -33,7 +32,7 @@ const InfoItem = (product) => {
           </Typography>
           <div style={{ display: "flex", gap: "10px", p: 1 }}>
             <Typography variant='h4' align='center' sx={{ pt: 0.5, }}>
-            {product.owner.owner}
+              {product.owner.owner}
             </Typography>
           </div>
         </div>
