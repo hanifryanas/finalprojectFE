@@ -12,7 +12,14 @@ import Looks3SharpIcon from '@mui/icons-material/Looks3Sharp';
 import Looks4SharpIcon from '@mui/icons-material/Looks4Sharp';
 import Looks5SharpIcon from '@mui/icons-material/Looks5Sharp';
 
-export default function InfoBidder() {
+const InfoBidder = (bidders) =>{
+    let dataBidder = []
+    let dataPrice = []
+    bidders.bidder.map((bidder) => {
+        dataBidder.push(bidder["username_bidder"])
+        dataPrice.push(bidder["price"])
+    })
+
     return (
         <Card sx={{ width: "360px" }}>
             <List sx={{ bgcolor: 'background.paper' }}>
@@ -23,7 +30,7 @@ export default function InfoBidder() {
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText
-                        primary="Babeh"
+                        primary={dataBidder[1]}
                         secondary={
                             <Typography
                                 sx={{ display: 'inline' }}
@@ -31,7 +38,7 @@ export default function InfoBidder() {
                                 variant="h6"
                                 color="text.primary"
                             >
-                                Rp. 13.000.000
+                                {dataPrice[1]}
                             </Typography>
                         }
                     />
@@ -44,7 +51,7 @@ export default function InfoBidder() {
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText
-                        primary="Bodot"
+                        primary={dataBidder[2]}
                         secondary={
                             <Typography
                                 sx={{ display: 'inline' }}
@@ -52,7 +59,7 @@ export default function InfoBidder() {
                                 variant="h6"
                                 color="text.primary"
                             >
-                                Rp.12.000.000
+                                {dataPrice[2]}
                             </Typography>
                         }
                     />
@@ -65,7 +72,7 @@ export default function InfoBidder() {
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText
-                        primary="Babeh"
+                        primary={dataBidder[3]}
                         secondary={
                             <Typography
                                 sx={{ display: 'inline' }}
@@ -73,7 +80,7 @@ export default function InfoBidder() {
                                 variant="h6"
                                 color="text.primary"
                             >
-                                Rp. 13.000.000
+                                {dataPrice[3]}
                             </Typography>
                         }
                     />
@@ -86,7 +93,7 @@ export default function InfoBidder() {
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText
-                        primary="Babeh"
+                        primary={dataBidder[4]}
                         secondary={
                             <Typography
                                 sx={{ display: 'inline' }}
@@ -94,7 +101,7 @@ export default function InfoBidder() {
                                 variant="h6"
                                 color="text.primary"
                             >
-                                Rp. 13.000.000
+                                {dataPrice[4]}
                             </Typography>
                         }
                     />
@@ -103,3 +110,4 @@ export default function InfoBidder() {
         </Card>
     );
 }
+export default InfoBidder;

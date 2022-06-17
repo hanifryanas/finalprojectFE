@@ -13,9 +13,11 @@ const BidContainer = () => {
     let ownerInfo = {};
     const [product, setProduct] = useState({})
     const [ownerUserInfo, setOwnerUserInfo] = useState({})
+    const [bidderUserInfo, setBidderUserInfo] = useState([])
     useEffect(() => {
         updateProductById()
         ownerUser()
+        updateBidder()
     }, [])
     
     const updateProductById = () => {
@@ -40,21 +42,29 @@ const BidContainer = () => {
             console.log(error);
         })
     }
-    
+
+    const updateBidder = () => {
+        axios.get(`http://localhost:3500/bid/product/${localStorage.getItem(`productId`)}`)
+        .then(function (response) {
+            setBidderUserInfo(response.data)
+        }).catch(function (error) {
+            console.log(error);
+        })
+    }
     return (
         <div>
             <Container maxWidth="xl" sx={{ mt: 5 }}>
                 <Grid container spacing={2} sx={{ mx: "auto" }}>
                     <Grid item s={12} md={9} spacing={2}>
                         <div style={{ marginBottom: 15 }}>
-                            <Jumbtron />
+                            <Jumbtron product={product} />
                         </div>
                         <InfoItem product={product} owner={ownerUserInfo}/>
                     </Grid>
                     <Grid item s={12} md={3} spacing={2}>
                         <div style={{ marginBottom: 15 }}>
                             <LastPrice product={product}></LastPrice>
-                            <InfoBidder />
+                            <InfoBidder bidder={bidderUserInfo} />
                         </div>
 
                         <ActionAreaBid product={product} />

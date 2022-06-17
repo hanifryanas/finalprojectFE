@@ -9,10 +9,10 @@ const ActionAreaBid = (product) => {
 
 
     const handleBidOrder = () => {
-        axios.post(`http://localhost:3500/product/${localStorage.getItem("productId")}/bid/${localStorage.getItem("userid")}/order`, {
+        axios.post(`http://localhost:3500/bid/${localStorage.getItem("userid")}/product/${localStorage.getItem("productId")}/order`, {
             bidder_ID: localStorage.getItem("userid"),
             product_ID: localStorage.getItem("productId"),
-            user_ID: localStorage.getItem("ownerId"),
+            owner_ID: localStorage.getItem("ownerId"),
             price: product.product.price + product.product.bidding_range,
         }).then(function (response) {
             console.log(response);
@@ -25,7 +25,10 @@ const ActionAreaBid = (product) => {
             price: product.product.price + product.product.bidding_range,
         }).then(function (response) {
             console.log(response);
-        }).catch(function (error) {
+            alert("Bid Successful")
+            window.location.reload()
+        })
+        .catch(function (error) {
             console.log(error);
         })
     }

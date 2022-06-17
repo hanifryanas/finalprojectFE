@@ -42,7 +42,7 @@ const CardItems = ({ product }) => {
         </Typography>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variant='subtitle1' component="div" sx={{ color: "gray", mt: 0.5 }}>
-            LB:  <NumberFormat value={2000000} displayType={'text'} thousandSeparator={true} prefix={'Rp '} />
+            LB:  <NumberFormat value={product.bidding_range} displayType={'text'} thousandSeparator={true} prefix={'Rp '} />
           </Typography>
 
           <Chip color="error" label={product.close_bid_date} />
