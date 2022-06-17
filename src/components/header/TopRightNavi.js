@@ -29,6 +29,7 @@ const TopRightNavi = () => {
         setIsLoggedIn(false);
         setUserName(null);
         handleClose();
+        window.location.href = "/";
     }
 
     useEffect(() => {

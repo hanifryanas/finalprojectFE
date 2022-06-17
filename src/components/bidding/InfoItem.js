@@ -2,35 +2,27 @@ import { Card, Avatar, Stack, Typography, Grid, Paper } from '@mui/material'
 import { Container } from '@mui/system'
 import React from 'react'
 
-const InfoItem = () => {
+const InfoItem = (product) => {
+  console.log(product.product)
+  console.log(product.owner)
   return (
     <Stack spacing={2}>
       <Card sx={{ px: 5, py: 2, }}>
         <Typography variant='h3' sx={{ mb: 2 }}>
-          Ikan Koi Hokaido Red White
+          {product.product.name}
         </Typography>
         <div style={{ display: "flex", gap: 50, }}>
           <div style={{ display: "flex", gap: 20, p: 1 }}>
             <Typography variant='h5' color={"gray"} align="left" sx={{ py: 1 }}>
-              Category:
+              Kategori:
             </Typography>
 
             <Typography variant='h5' sx={{ py: 1, mr: 1.5 }}>
-              Peliaharaan
+              {product.product.category}
             </Typography>
 
           </div>
 
-          <div style={{ display: "flex", gap: 20 }}>
-            <Typography variant='h5' color={"gray"} align="left" sx={{ py: 1, }}>
-              Jenis:
-            </Typography>
-
-            <Typography variant='h5' sx={{ py: 1 }}>
-              Ikan
-            </Typography>
-
-          </div>
         </div>
 
       </Card>
@@ -40,22 +32,18 @@ const InfoItem = () => {
             Pelelang:
           </Typography>
           <div style={{ display: "flex", gap: "10px", p: 1 }}>
-            <Avatar sx={{ bgcolor: "red", width: 50, height: 50 }} aria-label="recipe">
-              R
-            </Avatar>
-
             <Typography variant='h4' align='center' sx={{ pt: 0.5, }}>
-              Rafatar babis
+            {product.owner.owner}
             </Typography>
           </div>
         </div>
         <div style={{ display: "flex", gap: 20 }}>
           <Typography variant='h5' color={"gray"} align="left" sx={{ py: 1, }}>
-            Location:
+            Lokasi:
           </Typography>
 
           <Typography variant='h5' sx={{ py: 1 }}>
-            Jakarta
+            {product.owner.address}
           </Typography>
 
         </div>
@@ -67,10 +55,7 @@ const InfoItem = () => {
           Deskripsi Barang:
         </Typography>
         <Typography variant='subtitle1' component="div" sx={{ py: 1 }}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-
-
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          {product.product.description}
         </Typography>
       </Card>
 

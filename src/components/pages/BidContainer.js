@@ -6,17 +6,41 @@ import InfoItem from '../bidding/InfoItem'
 import Jumbtron from '../bidding/Jumbtron'
 import ActionAreaBid from '../bidding/ActionAreaBid'
 import LastPrice from '../bidding/LastPrice'
+import axios from 'axios'
 
 
 const BidContainer = () => {
-
-    const [productList, setProductList] = useState([])
-
-    // useEffect(() => {
-    //   updateProduct()
-    // }, [])
-
-
+    let ownerInfo = {};
+    const [product, setProduct] = useState({})
+    const [ownerUserInfo, setOwnerUserInfo] = useState({})
+    useEffect(() => {
+        updateProductById()
+        ownerUser()
+    }, [])
+    
+    const updateProductById = () => {
+        axios.get(`http://localhost:3500/product/${localStorage.getItem(`productId`)}`)
+        .then(function (response) {
+            setProduct(response.data)
+            const ownerId = response.data.owner_ID
+            localStorage.setItem(`ownerId`, ownerId)
+        }).catch(function (error) {
+            console.log(error);
+        })
+    }
+    
+    const ownerUser = () => {
+        console.log(localStorage.getItem(`ownerId`))
+        axios.get(`http://localhost:3500/user/${localStorage.getItem(`ownerId`)}`)
+        .then(function (response) {
+            ownerInfo.owner = response.data.username
+            ownerInfo.address = response.data.address
+            setOwnerUserInfo(ownerInfo)
+        }).catch(function (error) {
+            console.log(error);
+        })
+    }
+    
     return (
         <div>
             <Container maxWidth="xl" sx={{ mt: 5 }}>
@@ -25,15 +49,15 @@ const BidContainer = () => {
                         <div style={{ marginBottom: 15 }}>
                             <Jumbtron />
                         </div>
-                        <InfoItem />
+                        <InfoItem product={product} owner={ownerUserInfo}/>
                     </Grid>
                     <Grid item s={12} md={3} spacing={2}>
                         <div style={{ marginBottom: 15 }}>
-                            <LastPrice></LastPrice>
+                            <LastPrice product={product}></LastPrice>
                             <InfoBidder />
                         </div>
 
-                        <ActionAreaBid />
+                        <ActionAreaBid product={product} />
                     </Grid>
                     <Grid>
                     </Grid>

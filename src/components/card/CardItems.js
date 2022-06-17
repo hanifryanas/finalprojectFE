@@ -13,10 +13,13 @@ import EllipsisText from 'react-ellipsis-text/lib/components/EllipsisText';
 
 
 const CardItems = ({ product }) => {
-
+  const handleBid = () => {
+    localStorage.setItem('productId', product.id);
+    window.location.href = `/roomBid`;
+  }
 
   return (
-    <Card sx={{ width: 270, height: 390, }} action="#">
+    <Card sx={{ width: 270, height: 390, }} action="#" onClick={handleBid}>
       <CardMedia sx={{ display: "flex", justifyContent: "center", height: "200px" }}>
         <img src={product.image} alt="product-img" />
       </CardMedia>

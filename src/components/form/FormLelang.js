@@ -40,7 +40,7 @@ const FormLelang = () => {
       .then(function (response) {
         console.log(response);
         alert("Product has been added");
-        
+
       })
       .catch(function (error) {
         console.log(error);
@@ -59,7 +59,7 @@ const FormLelang = () => {
           <TextField
             required
             id="Title"
-            name="Title"  
+            name="Title"
             label="Object Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
