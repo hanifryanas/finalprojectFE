@@ -9,7 +9,7 @@ function Home() {
     return (
         <div>
             <Header />
-            <Container maxWidth="xl" sx={{ px: "auto", mt: 10 }}>
+            <Container maxWidth="xl">
                 <ProductContainer></ProductContainer>
             </Container >
         </div >

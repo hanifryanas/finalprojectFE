@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import CardItems from '../card/CardItems'
 import axios from 'axios'
+import { Container } from '@mui/material'
 
 
 const ProductContainer = () => {
@@ -19,13 +20,13 @@ const ProductContainer = () => {
   }
 
   return (
-    <section>
+    <Container maxWidth="xl" sx={{ display: "flex", gap: 2, px: "auto" }}>
       {
         productList.map(product => {
           return <CardItems key={product.id} product={product} />
         })
       }
-    </section>
+    </Container>
 
   )
 }

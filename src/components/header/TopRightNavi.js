@@ -79,7 +79,7 @@ const TopRightNavi = () => {
                 <div style={{ display: 'flex', alignContent: "space-around", gap: "10px", marginTop: "20px" }}>
                     {/* <Cart></Cart> */}
                     <Button href="/signin" variant="contained" sx={{ height: "45px" }} size="small">Melelang</Button>
-                    <Button onClick={handleOpen} href="#" variant="outlined" sx={{ height: "45px" }}>Login / Sign Up</Button>
+                    <Button onClick={handleOpen} href="#" variant="outlined" sx={{ height: "45px", borderColor: "#9EDE73" }}>Login / Sign Up</Button>
                     <Modal
                         open={open}
                         onClose={handleClose}

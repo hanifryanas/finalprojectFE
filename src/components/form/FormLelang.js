@@ -1,4 +1,4 @@
-import  React, {useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -36,10 +36,11 @@ const FormLelang = () => {
       start_bid_date: start_bid_date,
       close_bid_date: end_bid_date,
     }
-    axios.post(`http://localhost:3500/user/id/${userid}/product/`, data)
-    .then(function (response) {
+    axios.post(`http://localhost:3500/product/user/${userid}/`, data)
+      .then(function (response) {
         console.log(response);
         alert("Product has been added");
+        
       })
       .catch(function (error) {
         console.log(error);
@@ -58,7 +59,7 @@ const FormLelang = () => {
           <TextField
             required
             id="Title"
-            name="Title"
+            name="Title"  
             label="Object Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -67,7 +68,7 @@ const FormLelang = () => {
             variant="standard"
           />
         </Grid>
-        
+
         <Grid item xs={12} sm={8}>
           <TextField
             required
@@ -112,7 +113,7 @@ const FormLelang = () => {
             required
             id="dateEnd"
             name="dateEnd"
-            label="Date End"
+            label="Date End (DD/MM/YYYY)"
             value={end_bid_date}
             onChange={(e) => setEndBidDate(e.target.value)}
             fullWidth
@@ -148,10 +149,10 @@ const FormLelang = () => {
           />
         </Grid>
         <Grid container justifyContent="flex-end" sx={{ mt: 10 }}>
-        <Grid item>
-          <Button type="submit" variant="contained" >Lelang</Button>
+          <Grid item>
+            <Button type="submit" variant="contained" >Lelang</Button>
+          </Grid>
         </Grid>
-      </Grid>
       </Grid>
     </Box>
   );
