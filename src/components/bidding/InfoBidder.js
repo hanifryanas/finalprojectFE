@@ -38,7 +38,7 @@ const InfoBidder = (bidders) =>{
                                 variant="h6"
                                 color="text.primary"
                             >
-                                {dataPrice[1]}
+                               {dataPrice[1]}
                             </Typography>
                         }
                     />
@@ -59,7 +59,7 @@ const InfoBidder = (bidders) =>{
                                 variant="h6"
                                 color="text.primary"
                             >
-                                {dataPrice[2]}
+                               {dataPrice[2]}
                             </Typography>
                         }
                     />

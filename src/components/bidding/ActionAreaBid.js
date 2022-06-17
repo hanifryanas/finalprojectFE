@@ -38,18 +38,13 @@ const ActionAreaBid = (product) => {
     return (
         <Paper sx={{ p: 3 }}>
             <Typography component="h2" variant="h6" >
-                Bid Range: {product.product.bidding_range}
+                Bid Range: Rp {product.product.bidding_range}
             </Typography>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <Typography component="p" variant="h4" sx={{ mb: 2 }}>
                     Rp {product.product.price + product.product.bidding_range}
 
                 </Typography>
-                <div>
-                    <IconButton>-</IconButton>
-                    <IconButton>+</IconButton>
-
-                </div>
             </div>
             <Button variant="contained" size='large' fullWidth onClick={handleBidOrder}>
                 Bid
