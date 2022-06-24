@@ -16,9 +16,12 @@ const BidContainer = () => {
     const [bidderUserInfo, setBidderUserInfo] = useState([])
     useEffect(() => {
         updateProductById()
-        ownerUser()
         updateBidder()
     }, [])
+
+    useEffect(() => {
+        ownerUser()
+    }, [product])
 
     const updateProductById = () => {
         axios.get(`http://localhost:3500/product/${localStorage.getItem(`productId`)}`)
