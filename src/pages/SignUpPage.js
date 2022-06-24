@@ -1,6 +1,6 @@
 import { Container } from '@mui/system'
 import React from 'react'
-import SignUpForm from '../form/SignUpForm'
+import SignUpForm from '../components/form/SignUpForm'
 
 
 const SignUpPage = () => {

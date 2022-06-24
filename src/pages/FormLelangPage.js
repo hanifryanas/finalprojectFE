@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from '../header'
-import FormLelang from '../form/FormLelang'
+import Header from '../components/header'
+import FormLelang from '../components/form/FormLelang'
 import { Container } from '@mui/system'
 
 const FormLelangPage = () => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import CardItems from '../card/CardItems'
+import CardItems from '../components/card/CardItems'
 import axios from 'axios'
 import { Container } from '@mui/material'
 

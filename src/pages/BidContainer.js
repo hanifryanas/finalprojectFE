@@ -1,11 +1,11 @@
 import { Grid } from '@mui/material'
 import { Container, } from '@mui/system'
 import React, { useState, useEffect } from 'react'
-import InfoBidder from '../bidding/InfoBidder'
-import InfoItem from '../bidding/InfoItem'
-import Jumbtron from '../bidding/Jumbtron'
-import ActionAreaBid from '../bidding/ActionAreaBid'
-import LastPrice from '../bidding/LastPrice'
+import InfoBidder from '../components/bidding/InfoBidder'
+import InfoItem from '../components/bidding/InfoItem'
+import Jumbtron from '../components/bidding/Jumbtron'
+import ActionAreaBid from '../components/bidding/ActionAreaBid'
+import LastPrice from '../components/bidding/LastPrice'
 import axios from 'axios'
 
 

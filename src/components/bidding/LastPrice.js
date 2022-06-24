@@ -9,9 +9,14 @@ const LastPrice = (product) => {
     return (
         <Paper sx={{ p: 3, mb: 2, bgcolor: "#FEF9A7" }}>
             <div style={{ display: "flex", gap: 10, marginBottom: 15, }}>
-                <Avatar alt="1">
-                    <LooksOneSharpIcon />
-                </Avatar>
+                {product === null ?
+                    <Typography variant='h5' color={"gray"} align="left" sx={{ py: 1 }}>
+                        Start Price:
+                    </Typography>
+                    :
+                    <Avatar alt="1">
+                        <LooksOneSharpIcon />
+                    </Avatar>}
                 <Typography component="h2" variant="h5" sx={{ py: 0.5 }}>
                     {product.product.top_bidder}
                 </Typography>
