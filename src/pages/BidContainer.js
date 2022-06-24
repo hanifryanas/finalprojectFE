@@ -1,11 +1,11 @@
 import { Grid } from '@mui/material'
 import { Container, } from '@mui/system'
 import React, { useState, useEffect } from 'react'
-import InfoBidder from '../bidding/InfoBidder'
-import InfoItem from '../bidding/InfoItem'
-import Jumbtron from '../bidding/Jumbtron'
-import ActionAreaBid from '../bidding/ActionAreaBid'
-import LastPrice from '../bidding/LastPrice'
+import InfoBidder from '../components/bidding/InfoBidder'
+import InfoItem from '../components/bidding/InfoItem'
+import Jumbtron from '../components/bidding/Jumbtron'
+import ActionAreaBid from '../components/bidding/ActionAreaBid'
+import LastPrice from '../components/bidding/LastPrice'
 import axios from 'axios'
 
 
@@ -16,12 +16,15 @@ const BidContainer = () => {
     const [bidderUserInfo, setBidderUserInfo] = useState([])
     useEffect(() => {
         updateProductById()
-        ownerUser()
         updateBidder()
     }, [])
 
+    useEffect(() => {
+        ownerUser()
+    }, [product])
+
     const updateProductById = () => {
-        axios.get(`https://ancient-tundra-53041.herokuapp.com/product/${localStorage.getItem(`productId`)}`)
+        axios.get(`http://localhost:3500/product/${localStorage.getItem(`productId`)}`)
             .then(function (response) {
                 setProduct(response.data)
                 const ownerId = response.data.owner_ID
@@ -33,7 +36,7 @@ const BidContainer = () => {
 
     const ownerUser = () => {
         console.log(localStorage.getItem(`ownerId`))
-        axios.get(`https://ancient-tundra-53041.herokuapp.com/user/${localStorage.getItem(`ownerId`)}`)
+        axios.get(`http://localhost:3500/user/${localStorage.getItem(`ownerId`)}`)
             .then(function (response) {
                 ownerInfo.owner = response.data.username
                 ownerInfo.address = response.data.address
@@ -44,7 +47,7 @@ const BidContainer = () => {
     }
 
     const updateBidder = () => {
-        axios.get(`https://ancient-tundra-53041.herokuapp.com/bid/product/${localStorage.getItem(`productId`)}`)
+        axios.get(`http://localhost:3500/bid/product/${localStorage.getItem(`productId`)}`)
             .then(function (response) {
                 setBidderUserInfo(response.data)
             }).catch(function (error) {

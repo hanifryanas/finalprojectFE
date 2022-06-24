@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import CardItems from '../card/CardItems'
+import CardItems from '../components/card/CardItems'
 import axios from 'axios'
 import { Container } from '@mui/material'
 
@@ -12,7 +12,7 @@ const ProductContainer = () => {
   }, [])
 
   const updateProduct = () => {
-    axios.get(`https://ancient-tundra-53041.herokuapp.com/product`).then(function (response) {
+    axios.get(`http://localhost:3500/product`).then(function (response) {
       setProductList(response.data)
     }).catch(function (error) {
       console.log(error);

@@ -1,7 +1,6 @@
-import CardItems from '../card/CardItems'
 import React from 'react'
-import Header from '../header'
-import { Container, Divider } from '@mui/material'
+import Header from '../components/header'
+import { Container } from '@mui/material'
 import ProductContainer from './ProductContainer'
 
 

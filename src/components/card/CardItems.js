@@ -3,8 +3,6 @@ import {
   Card,
   CardMedia,
   CardContent,
-  CardActions,
-  Button,
   Typography,
   Chip
 } from '@mui/material';

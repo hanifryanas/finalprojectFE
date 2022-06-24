@@ -1,7 +1,6 @@
 import React from 'react'
-import SignInForm from '../form/SignInForm'
-import Header from '../header'
-import FormLelang from '../form/FormLelang'
+import Header from '../components/header'
+import FormLelang from '../components/form/FormLelang'
 import { Container } from '@mui/system'
 
 const FormLelangPage = () => {
