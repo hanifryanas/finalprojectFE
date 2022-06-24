@@ -6,10 +6,11 @@ import NumberFormat from 'react-number-format';
 
 
 const LastPrice = (product) => {
+    console.log(product)
     return (
         <Paper sx={{ p: 3, mb: 2, bgcolor: "#FEF9A7" }}>
             <div style={{ display: "flex", gap: 10, marginBottom: 15, }}>
-                {product === null ?
+                {product.product.top_bidder === null ?
                     <Typography variant='h5' color={"gray"} align="left" sx={{ py: 1 }}>
                         Start Price:
                     </Typography>

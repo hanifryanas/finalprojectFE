@@ -25,7 +25,7 @@ const ActionAreaBid = (product) => {
 
 
     const handleBidOrder = () => {
-        axios.post(`https://ancient-tundra-53041.herokuapp.com/bid/${localStorage.getItem("userid")}/product/${localStorage.getItem("productId")}/order`, {
+        axios.post(`http://localhost:3500/bid/${localStorage.getItem("userid")}/product/${localStorage.getItem("productId")}/order`, {
             bidder_ID: localStorage.getItem("userid"),
             product_ID: localStorage.getItem("productId"),
             owner_ID: localStorage.getItem("ownerId"),
@@ -35,7 +35,7 @@ const ActionAreaBid = (product) => {
         }).catch(function (error) {
             console.log(error);
         })
-        axios.put(`https://ancient-tundra-53041.herokuapp.com/product/${localStorage.getItem("productId")}/bid/${localStorage.getItem("userid")}/update`, {
+        axios.put(`http://localhost:3500/product/${localStorage.getItem("productId")}/bid/${localStorage.getItem("userid")}/update`, {
             bidder_ID: localStorage.getItem("userid"),
             product_ID: localStorage.getItem("productId"),
             price: product.product.price + product.product.bidding_range,
