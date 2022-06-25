@@ -24,7 +24,7 @@ const BidContainer = () => {
     }, [product])
 
     const updateProductById = () => {
-        axios.get(`http://localhost:3500/product/${localStorage.getItem(`productId`)}`)
+        axios.get(`https://ancient-tundra-53041.herokuapp.com/product/${localStorage.getItem(`productId`)}`)
             .then(function (response) {
                 setProduct(response.data)
                 const ownerId = response.data.owner_ID
@@ -36,7 +36,7 @@ const BidContainer = () => {
 
     const ownerUser = () => {
         console.log(localStorage.getItem(`ownerId`))
-        axios.get(`http://localhost:3500/user/${localStorage.getItem(`ownerId`)}`)
+        axios.get(`https://ancient-tundra-53041.herokuapp.com/user/${localStorage.getItem(`ownerId`)}`)
             .then(function (response) {
                 ownerInfo.owner = response.data.username
                 ownerInfo.address = response.data.address
@@ -47,7 +47,7 @@ const BidContainer = () => {
     }
 
     const updateBidder = () => {
-        axios.get(`http://localhost:3500/bid/product/${localStorage.getItem(`productId`)}`)
+        axios.get(`https://ancient-tundra-53041.herokuapp.com/bid/product/${localStorage.getItem(`productId`)}`)
             .then(function (response) {
                 setBidderUserInfo(response.data)
             }).catch(function (error) {

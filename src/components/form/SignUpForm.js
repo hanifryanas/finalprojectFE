@@ -40,7 +40,7 @@ const SignUpForm = () => {
 
   const registerUser = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:3500/user/signup', {
+    axios.post('https://ancient-tundra-53041.herokuapp.com/user/signup', {
       username: name,
       password: password,
       email: email,
