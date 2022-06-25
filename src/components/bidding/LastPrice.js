@@ -5,9 +5,12 @@ import LooksOneSharpIcon from '@mui/icons-material/LooksOneSharp';
 
 
 const LastPrice = (product) => {
-    console.log(product)
-    const [isNull, setIsNull] = useState(true)
-    (product.product.top_bidder === null) ? setIsNull(true) : setIsNull(false)
+    const [isNull, setIsNull] = useState(false);
+
+    if(product.product.top_bidder === null){
+        setIsNull(true)
+    }
+
     return (
         isNull ?
         <Paper sx={{ p: 3, mb: 2, bgcolor: "#FEF9A7" }}>
